@@ -1,0 +1,4 @@
+.propertyPage {
+    display: flex;
+    flex-direction: column;
+}

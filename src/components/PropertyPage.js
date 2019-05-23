@@ -1,10 +1,13 @@
 import React from 'react';
-import PropertyList from './PropertyList';
+import HeaderContainer from './header/HeaderContainer';
+import PropertyListContainer from './properties/PropertyListContainer';
+import styles from './PropertyPage.module.css';
 
 class PropertyPage extends React.Component {
   constructor() {
     super();
     this.state = {
+      propertyFilter: null,
       propertyList: [],
     };
   }
@@ -19,7 +22,12 @@ class PropertyPage extends React.Component {
   }
 
   render() {
-    return <PropertyList propertyList={this.state.propertyList} />;
+    return (
+      <div className={styles.propertyPage}>
+        <HeaderContainer propertyFilter={this.state.propertyFilter} />
+        <PropertyListContainer propertyList={this.state.propertyList} />
+      </div>
+    );
   }
 }
 
