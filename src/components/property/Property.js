@@ -17,7 +17,12 @@ class Property extends React.Component {
           <img src={property.image} />
         </div>
         <div>
-          <Address address={property.street} />
+          <Address
+            street={property.street}
+            suburb={property.suburb}
+            state={property.state}
+            postcode={property.postcode}
+          />
         </div>
       </div>
     );

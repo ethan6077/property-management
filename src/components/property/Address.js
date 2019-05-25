@@ -3,10 +3,12 @@ import styles from './Address.module.css';
 
 class Address extends React.Component {
   render() {
-    const { address } = this.props;
+    const { street, suburb, state, postcode } = this.props;
     return (
       <div className={styles.container}>
-        {address}
+        <span>{street}</span>
+        <span>{suburb}</span>
+        <span>{state + ' ' + postcode}</span>
       </div>
     );
   }
