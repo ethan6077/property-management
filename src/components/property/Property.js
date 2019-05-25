@@ -9,7 +9,7 @@ class Property extends React.Component {
     const { property } = this.props;
     return (
       <div className={styles.container}>
-        <div>
+        <div className={styles.header}>
           <Price price={property.price} />
           <PropertyStatus status={property.status} />
         </div>

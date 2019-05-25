@@ -7,6 +7,15 @@
     border-color: black;
 }
 
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .imgContainer {
     padding: 10px;
 }
