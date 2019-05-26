@@ -1,6 +1,8 @@
 import React from 'react';
 import HeaderContainer from './header/HeaderContainer';
 import PropertyListContainer from './properties/PropertyListContainer';
+import Loader from './common/Loader';
+import Error from './common/Error';
 import styles from './PropertyPage.module.css';
 
 class PropertyPage extends React.Component {
@@ -15,10 +17,10 @@ class PropertyPage extends React.Component {
 
   async componentDidMount() {
     try {
-      this.setState({ propertyStatus: 'loading' });
+      this.setState({ propertyStatus: 'error' });
       const response = await fetch('https://code-challenge.activepipe.com/challenge/properties');
       const dataInJson = await response.json();
-      this.setState({ propertyStatus: 'done' });
+      // this.setState({ propertyStatus: 'done' });
       console.log('data', dataInJson);
       this.setState({ propertyList: dataInJson });
     } catch (e) {
@@ -32,11 +34,19 @@ class PropertyPage extends React.Component {
       propertyFilter: event.target.value,
     });
   }
-  
+
   renderLoader() {
     return (
       <div className={styles.loaderContainer}>
-        <div className={styles.ldsDualRing}></div>
+        <Loader />
+      </div>
+    );
+  }
+
+  renderErrorMsg() {
+    return (
+      <div className={styles.msgContainer}>
+        <Error />
       </div>
     );
   }
@@ -60,6 +70,8 @@ class PropertyPage extends React.Component {
     let content = null;
     if (this.state.propertyStatus === 'loading') {
       content = this.renderLoader();
+    } else if (this.state.propertyStatus === 'error') {
+      content = this.renderErrorMsg();
     } else {
       content = this.renderMainContent();
     }

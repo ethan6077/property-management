@@ -1,0 +1,8 @@
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #c13e3e;
+    height: 80px;
+    width: 1000px;
+}

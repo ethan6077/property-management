@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import PropertyPage from './components/PropertyPage';
 
 function App() {
