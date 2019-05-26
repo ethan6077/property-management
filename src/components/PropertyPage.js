@@ -7,7 +7,7 @@ class PropertyPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      propertyFilter: null,
+      propertyFilter: 'default',
       propertyList: [],
     };
   }
@@ -21,11 +21,23 @@ class PropertyPage extends React.Component {
       });
   }
 
+  changeFilter = (event) => {
+    this.setState({
+      propertyFilter: event.target.value,
+    });
+  }
+
   render() {
+    let filteredPropertyList = [];
+    if (this.state.propertyFilter !== 'default') {
+      filteredPropertyList = this.state.propertyList.filter(p => p.status === this.state.propertyFilter);
+    } else {
+      filteredPropertyList = this.state.propertyList;
+    }
     return (
       <div className={styles.propertyPage}>
-        <HeaderContainer propertyFilter={this.state.propertyFilter} />
-        <PropertyListContainer propertyList={this.state.propertyList} />
+        <HeaderContainer propertyFilter={this.state.propertyFilter} changeFilter={this.changeFilter} />
+        <PropertyListContainer propertyList={filteredPropertyList} />
       </div>
     );
   }

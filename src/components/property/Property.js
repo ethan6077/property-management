@@ -14,7 +14,7 @@ class Property extends React.Component {
           <PropertyStatus status={property.status} />
         </div>
         <div className={styles.imgContainer}>
-          <img src={property.image} />
+          <img src={property.image} alt={'property_img'} />
         </div>
         <div>
           <Address
