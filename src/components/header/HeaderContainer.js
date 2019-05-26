@@ -8,7 +8,7 @@ class HeaderContainer extends React.Component {
     const statusArray = Array.from(StatusMap.keys());
     return (
       <div className={styles.headerContainer}>
-        <select value={propertyFilter} onChange={changeFilter}>
+        <select className={styles.headerSelect} value={propertyFilter} onChange={changeFilter}>
           <option key={'default'} value="default">Filter Status</option>
           {
             statusArray.map((statusKey) => {

@@ -17,7 +17,7 @@ class PropertyPage extends React.Component {
 
   async componentDidMount() {
     try {
-      this.setState({ propertyStatus: 'error' });
+      this.setState({ propertyStatus: 'loading' });
       const response = await fetch('https://code-challenge.activepipe.com/challenge/properties');
       const dataInJson = await response.json();
       this.setState({ propertyStatus: 'done' });

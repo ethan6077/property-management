@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-select {
+.headerSelect {
     position: absolute;
     top: 30px;
     right: 100px;
