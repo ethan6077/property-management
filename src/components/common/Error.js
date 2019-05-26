@@ -7,7 +7,7 @@ function Error() {
   return (
     <div className={styles.error}>
       <section>
-        <img src={SadFace} alt="sad-face" />
+        <img className={styles.sadFace} src={SadFace} alt="sad-face" />
         <span className={styles.text}>Uh-oh... it looks like some things haven't loaded correctly.</span>
       </section>
       <img className={styles.refreshBtn} src={RefreshBtn} alt="sad-face" onClick={() => window.location.reload(true)} />
