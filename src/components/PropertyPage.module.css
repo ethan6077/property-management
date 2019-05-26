@@ -1,7 +1,6 @@
 .propertyPage {
     display: flex;
     flex-direction: column;
-    background-color: #474f5b;
 }
 
 .loaderContainer {
