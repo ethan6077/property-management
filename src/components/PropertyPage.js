@@ -9,16 +9,22 @@ class PropertyPage extends React.Component {
     this.state = {
       propertyFilter: 'default',
       propertyList: [],
+      propertyStatus: 'initial', // initial, loading, done, error
     };
   }
 
-  componentDidMount() {
-    fetch('https://code-challenge.activepipe.com/challenge/properties')
-      .then(response => response.json())
-      .then(data => {
-        console.log('data', data);
-        this.setState({ propertyList: data });
-      });
+  async componentDidMount() {
+    try {
+      this.setState({ propertyStatus: 'loading' });
+      const response = await fetch('https://code-challenge.activepipe.com/challenge/properties');
+      const dataInJson = await response.json();
+      this.setState({ propertyStatus: 'done' });
+      console.log('data', dataInJson);
+      this.setState({ propertyList: dataInJson });
+    } catch (e) {
+      console.warn(e);
+      this.setState({ propertyStatus: 'error' });
+    }
   }
 
   changeFilter = (event) => {
@@ -26,8 +32,16 @@ class PropertyPage extends React.Component {
       propertyFilter: event.target.value,
     });
   }
+  
+  renderLoader() {
+    return (
+      <div className={styles.loaderContainer}>
+        <div className={styles.ldsDualRing}></div>
+      </div>
+    );
+  }
 
-  render() {
+  renderMainContent() {
     let filteredPropertyList = [];
     if (this.state.propertyFilter !== 'default') {
       filteredPropertyList = this.state.propertyList.filter(p => p.status === this.state.propertyFilter);
@@ -35,9 +49,23 @@ class PropertyPage extends React.Component {
       filteredPropertyList = this.state.propertyList;
     }
     return (
-      <div className={styles.propertyPage}>
+      <React.Fragment>
         <HeaderContainer propertyFilter={this.state.propertyFilter} changeFilter={this.changeFilter} />
         <PropertyListContainer propertyList={filteredPropertyList} />
+      </React.Fragment>
+    )
+  }
+
+  render() {
+    let content = null;
+    if (this.state.propertyStatus === 'loading') {
+      content = this.renderLoader();
+    } else {
+      content = this.renderMainContent();
+    }
+    return (
+      <div className={styles.propertyPage}>
+        {content}
       </div>
     );
   }
