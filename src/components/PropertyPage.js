@@ -21,7 +21,6 @@ class PropertyPage extends React.Component {
       const response = await fetch('https://code-challenge.activepipe.com/challenge/properties');
       const dataInJson = await response.json();
       this.setState({ propertyStatus: 'done' });
-      console.log('data', dataInJson);
       this.setState({ propertyList: dataInJson });
     } catch (e) {
       console.warn(e);

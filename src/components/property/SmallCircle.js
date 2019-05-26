@@ -2,9 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './SmallCircle.module.css';
 
-class SmallCircle extends React.Component {
-  render() {
-    const { status } = this.props;
+function SmallCircle(props) {
+  const { status } = props;
     return (
       <span className={classNames({
         [styles.current]: status === 'current',
@@ -13,7 +12,6 @@ class SmallCircle extends React.Component {
         [styles.withDrawn]: status === 'withdrawn',
       })}></span>
     );
-  }
 }
 
 export default SmallCircle;
