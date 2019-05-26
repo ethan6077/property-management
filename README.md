@@ -16,4 +16,5 @@
 ## Extra Feature
 1. CSS modules
 2. Responsive
-3. TypeScript version is coming soon ...
+3. Component is designed to be reusable and testable(For simplicity, it only covers some important logic in the code though)
+4. TypeScript version is coming soon ...
