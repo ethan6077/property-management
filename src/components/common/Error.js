@@ -6,7 +6,7 @@ import RefreshBtn from '../../img/refresh.svg';
 function Error() {
   return (
     <div className={styles.error}>
-      <section>
+      <section className={styles.errorSection}>
         <img className={styles.sadFace} src={SadFace} alt="sad-face" />
         <span className={styles.text}>Uh-oh... it looks like some things haven't loaded correctly.</span>
       </section>
